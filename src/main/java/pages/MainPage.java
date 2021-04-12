@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -58,9 +59,66 @@ public class MainPage extends BasePage {
         return new LogPage();
     }
 
+    //Test #5
+    @FindBy(xpath = "//a[contains(@href,'3-clothes')]")
+    private WebElement clothesLink;
 
+    @FindBy(xpath = "//a[contains(@href,'4-men')]")
+    private WebElement menCategory;
 
+    @FindBy(xpath = "//a[contains(@href,'5-women')]")
+    private WebElement womenCategory;
 
+    @FindBy(xpath = "//a[contains(@href,'6-accessories')]")
+    private WebElement accessoriesLink;
 
+    @FindBy(xpath = "//a[contains(@href,'7-stationery')]")
+    private WebElement stationery;
 
+    @FindBy(xpath = "//a[contains(@href,'8-home-accessories')]")
+    private WebElement homeAccessories;
+
+    @FindBy(xpath = "//a[contains(@href,'9-art')]")
+    private WebElement artLink;
+
+    @FindBy(xpath = "//div[@class='popover sub-menu js-sub-menu collapse']//ul[@class='top-menu']")
+    private WebElement emptyFields;
+
+    public MainPage leanOnClothesLink() {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(clothesLink).build().perform();
+        return this;
+    }
+
+    public boolean isMenCategoryDisplayed() {
+        return menCategory.isDisplayed();
+    }
+
+    public boolean isWomenCategoryDisplayed() {
+        return womenCategory.isDisplayed();
+    }
+
+    public MainPage leanOnAccessoriesLink() {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(accessoriesLink).build().perform();
+        return this;
+    }
+
+    public boolean isStationeryDisplayed() {
+        return stationery.isDisplayed();
+    }
+
+    public boolean isHomeAccessoriesDisplayed() {
+        return homeAccessories.isDisplayed();
+    }
+
+    public MainPage leanOnArtLink() {
+        Actions actions = new Actions(driver);
+        actions.moveToElement(artLink).build().perform();
+        return this;
+    }
+
+    public boolean areAnyLinksIsDisplayed() {
+        return emptyFields.isDisplayed();
+    }
 }
