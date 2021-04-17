@@ -1,5 +1,6 @@
 package pages;
 
+import blocks.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -120,5 +121,21 @@ public class MainPage extends BasePage {
 
     public boolean areAnyLinksIsDisplayed() {
         return emptyFields.isDisplayed();
+    }
+
+    //test #6
+    @FindBy(xpath = "//div[@itemprop='itemListElement']")
+    private List<WebElement> productContainersOnPage;
+
+    public int getNumberOfProductsOnPage() {
+        Product product = new Product();
+        int productsOnPage = product.getNumbersOfProducts(productContainersOnPage);
+        return productsOnPage;
+    }
+
+    public List<Product> getProductsOnPage() {
+        Product product = new Product();
+        List<Product> allProducts = product.getAllProductsOnPage(productContainersOnPage);
+        return allProducts;
     }
 }

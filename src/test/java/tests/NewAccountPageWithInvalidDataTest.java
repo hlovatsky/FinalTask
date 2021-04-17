@@ -6,7 +6,7 @@ import static org.testng.Assert.*;
 
 import pages.MainPage;
 
-public class CreateNewAccountPageWithInvalidDataTest extends BaseTest {
+public class NewAccountPageWithInvalidDataTest extends BaseTest {
 
     @Test
     public void checkColorOfFirstNameField() {

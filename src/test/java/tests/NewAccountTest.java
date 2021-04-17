@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import pages.MainPage;
 import static org.testng.Assert.*;
 
-public class CreateNewAccountTest extends BaseTest {
+public class NewAccountTest extends BaseTest {
 
     @Test
     public void checkName() {

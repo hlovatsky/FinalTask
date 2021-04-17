@@ -30,14 +30,14 @@ public class BaseTest {
             WebElement webElement = new WebDriverWait(driver, 5)
                     .until(ExpectedConditions.visibilityOfElementLocated(By.id("loadingMessage")));
         } catch (Exception e) {
-            System.out.println("Not window");
+
         }
 
         try {
             Boolean webElement = new WebDriverWait(driver, 5)
                     .until(ExpectedConditions.invisibilityOfElementLocated(By.id("loadingMessage")));
         } catch (Exception e) {
-            System.out.println("Not window");
+
         }
 
         driver.switchTo().frame("framelive");
