@@ -125,17 +125,27 @@ public class MainPage extends BasePage {
 
     //test #6
     @FindBy(xpath = "//div[@itemprop='itemListElement']")
-    private List<WebElement> productContainersOnPage;
+    private List<WebElement> productContainersOnMainPage;
 
     public int getNumberOfProductsOnPage() {
         Product product = new Product();
-        int productsOnPage = product.getNumbersOfProducts(productContainersOnPage);
+        int productsOnPage = product.getNumbersOfProducts(productContainersOnMainPage);
         return productsOnPage;
     }
 
-    public List<Product> getProductsOnPage() {
+    public List<Product> getProductsOnMainPage() {
         Product product = new Product();
-        List<Product> allProducts = product.getAllProductsOnPage(productContainersOnPage);
-        return allProducts;
+        List<Product> allProductsOnMainPage = product.getAllProductsOnPage(productContainersOnMainPage);
+        return allProductsOnMainPage;
+    }
+
+    //test #7
+    @FindBy(xpath = "//footer[@id='footer']//a[@id='link-product-page-prices-drop-1']")
+    private WebElement pricesDropLink;
+
+    public OnSalePage clickOnPriceDropLink() throws InterruptedException {
+        scrollToElementWithJS(pricesDropLink);
+        pricesDropLink.click();
+        return new OnSalePage();
     }
 }

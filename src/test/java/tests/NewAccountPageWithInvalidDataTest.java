@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.annotations.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.testng.Assert.*;
 
 import pages.MainPage;
@@ -13,8 +14,7 @@ public class NewAccountPageWithInvalidDataTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-
-        String actualResult1 = mainPage.clickOnSignInButton()
+        String actualColor = mainPage.clickOnSignInButton()
                 .clickOnNoAccountButton()
                 .clickOnMrFieldWindow()
                 .clickOnFirstNameField("James8")
@@ -30,9 +30,16 @@ public class NewAccountPageWithInvalidDataTest extends BaseTest {
                 .getColorOfFirstNameField();
 
 
-        //String[] s = actualResult.split("solid");
+        String[] s = actualColor.split("solid");
 
-        assertEquals(actualResult1, "red");
+        //assertEquals(s[0], "rgb(255, 76, 76) ");
+        assertThat(s[0]).isEqualTo("rgb(255, 76, 76) ");
+    }
+
+    @Test
+    public void isErrorMessageIsDisplayed() {
+
+        MainPage mainPage = new MainPage();
 
         boolean isMessageDisplayed = mainPage.clickOnSignInButton()
                 .clickOnNoAccountButton()
@@ -49,7 +56,8 @@ public class NewAccountPageWithInvalidDataTest extends BaseTest {
                 .clickOnSaveButtonWithInvalidData()
                 .isErrorMessageIsDisplayed();
 
-        assertTrue(isMessageDisplayed);
+        //assertTrue(isMessageDisplayed);
+        assertThat(isMessageDisplayed).isTrue();
 
     }
 }

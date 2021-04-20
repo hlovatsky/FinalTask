@@ -1,17 +1,10 @@
 package tests;
 
 import blocks.Product;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
-
-
 import org.testng.annotations.Test;
 import pages.MainPage;
-
-
 import java.util.List;
-
 
 public class NumbersNamesPricesOfProductsTest extends BaseTest {
 
@@ -21,25 +14,24 @@ public class NumbersNamesPricesOfProductsTest extends BaseTest {
 
         int allProductsOnPage = mainPage.getNumberOfProductsOnPage();
 
-        assertEquals(allProductsOnPage, 8);
+        assertThat(allProductsOnPage).isEqualTo(8);
     }
 
     @Test
     public void getNamesOFProducts() {
         MainPage mainPage = new MainPage();
 
-        List<Product> allProductsWithName = mainPage.getProductsOnPage();
+        List<Product> allProductsWithName = mainPage.getProductsOnMainPage();
         for (Product product : allProductsWithName) {
             assertThat(product.getName().isDisplayed()).isEqualTo(true);
         }
-
     }
 
     @Test
     public void getPriceOFProducts() {
         MainPage mainPage = new MainPage();
 
-        List<Product> allProductsWithPrice = mainPage.getProductsOnPage();
+        List<Product> allProductsWithPrice = mainPage.getProductsOnMainPage();
         for (Product product : allProductsWithPrice) {
             assertThat(product.getWePrice().isDisplayed()).isEqualTo(true);
         }
@@ -49,11 +41,11 @@ public class NumbersNamesPricesOfProductsTest extends BaseTest {
     public void isPriceMoreThanZero() {
         MainPage mainPage = new MainPage();
 
-        List<Product> prices = mainPage.getProductsOnPage();
+        List<Product> prices = mainPage.getProductsOnMainPage();
         for (Product product : prices) {
-            String price = product.getPrice().replace("€","");
+            String price = product.getPrice().replace("€", "");
+
             assertThat(Double.parseDouble(price)).isGreaterThan(0.00);
         }
     }
 }
-

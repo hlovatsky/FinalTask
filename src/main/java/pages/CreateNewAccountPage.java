@@ -110,7 +110,7 @@ public class CreateNewAccountPage extends BasePage {
     }
 
     public String getColorOfFirstNameField() {
-        return firstNameField.getCssValue("outline-color");
+        return firstNameField.getCssValue("outline");
     }
 
     public boolean isErrorMessageIsDisplayed() {

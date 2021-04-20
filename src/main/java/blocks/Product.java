@@ -17,6 +17,8 @@ public class Product {
     private WebElement name;
     private String price;
     private WebElement wePrice;
+    private WebElement salesOldPrice;
+    private WebElement salesNewPrice;
 
     public Product() {
     }
@@ -26,8 +28,8 @@ public class Product {
         this.name = container.findElement(By.xpath(".//h3[@class='h3 product-title']"));
         this.price = container.findElement(By.xpath(".//div[@class='product-price-and-shipping']//span[@class='price']")).getText();
         this.wePrice = container.findElement(By.xpath(".//div[@class='product-price-and-shipping']//span[@class='price']"));
-
-        //this.regularPrice = container.findElement(By.xpath(".//div[@class='product-price-and-shipping']//span[@class='regular-price']"));
+        this.salesOldPrice = container.findElement(By.xpath(".//span[@class='regular-price']"));
+        this.salesNewPrice = container.findElement(By.xpath(".//span[@class='price']"));
     }
 
     public int getNumbersOfProducts(List<WebElement> containers) {
