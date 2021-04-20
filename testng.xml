@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/hlova/FinalTask">
+        <classes>
+            <class name="tests.CategoriesTest">
+                <methods>
+                    <include name="isMenCategoryDisplayed"/>
+                    <include name="isWomenCategoryDisplayed"/>
+                    <include name="isStationeryDisplayed"/>
+                    <include name="isHomeAccessoriesDisplayed"/>
+                    <include name="areAnyLinksIsDisplayed"/>
+                </methods>
+            </class>
+            <class name="tests.CheckMessageTest">
+                <methods>
+                    <include name="checkErrorMessage"/>
+                </methods>
+            </class>
+            <class name="tests.NewAccountPageWithInvalidDataTest">
+                <methods>
+                    <include name="checkColorOfFirstNameField"/>
+                    <include name="isErrorMessageIsDisplayed"/>
+                </methods>
+            </class>
+            <class name="tests.NewAccountTest">
+                <methods>
+                    <include name="checkName"/>
+                </methods>
+            </class>
+            <class name="tests.NumbersNamesPricesOfProductsTest">
+                <methods>
+                    <include name="getNumberOfProducts"/>
+                    <include name="getNamesOFProducts"/>
+                    <include name="getPriceOFProducts"/>
+                    <include name="isPriceMoreThanZero"/>
+                </methods>
+            </class>
+            <class name="tests.PricesOfProductsTest">
+                <methods>
+                    <include name="hasProductOldPrice"/>
+                    <include name="hasProductNewPrice"/>
+                    <include name="checkDiscount"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

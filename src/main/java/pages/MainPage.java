@@ -1,6 +1,7 @@
 package pages;
 
-import blocks.Product;
+import blocks.MainPageProduct;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
+@Slf4j
 public class MainPage extends BasePage {
 
     //Test #1
@@ -25,12 +27,15 @@ public class MainPage extends BasePage {
     }
 
     public MainPage inputEmail(String email) throws InterruptedException {
+        log.info("Scroll to email field");
         scrollToElementWithJS(emailInput);
+        log.info("enter kjfhkdjlkglkfgj in email field");
         emailInput.sendKeys(email);
         return this;
     }
 
     public MainPage subscribeButton() {
+        log.info("Clicking on the subscribe button");
         subscribeButton.click();
         return this;
     }
@@ -128,19 +133,19 @@ public class MainPage extends BasePage {
     private List<WebElement> productContainersOnMainPage;
 
     public int getNumberOfProductsOnPage() {
-        Product product = new Product();
-        int productsOnPage = product.getNumbersOfProducts(productContainersOnMainPage);
+        MainPageProduct mainPageProduct = new MainPageProduct();
+        int productsOnPage = mainPageProduct.getNumbersOfProducts(productContainersOnMainPage);
         return productsOnPage;
     }
 
-    public List<Product> getProductsOnMainPage() {
-        Product product = new Product();
-        List<Product> allProductsOnMainPage = product.getAllProductsOnPage(productContainersOnMainPage);
+    public List<MainPageProduct> getProductsOnMainPage() {
+        MainPageProduct mainPageProduct = new MainPageProduct();
+        List<MainPageProduct> allProductsOnMainPage = mainPageProduct.getAllProductsOnPage(productContainersOnMainPage);
         return allProductsOnMainPage;
     }
 
     //test #7
-    @FindBy(xpath = "//footer[@id='footer']//a[@id='link-product-page-prices-drop-1']")
+    @FindBy(xpath = "//div[@class='col-md-6 wrapper']//a[@id='link-product-page-prices-drop-1']")
     private WebElement pricesDropLink;
 
     public OnSalePage clickOnPriceDropLink() throws InterruptedException {

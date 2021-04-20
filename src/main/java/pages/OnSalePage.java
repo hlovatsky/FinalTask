@@ -1,6 +1,7 @@
 package pages;
 
-import blocks.Product;
+import blocks.MainPageProduct;
+import blocks.SalePageProduct;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -15,9 +16,10 @@ public class OnSalePage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public List<Product> getProductsOnSalesPage() {
-        Product product = new Product();
-        List<Product> allProductsOnSalePage = product.getAllProductsOnPage(productsOnSalePage);
+    public List<SalePageProduct> getProductsOnSalePage() {
+        SalePageProduct salePageProduct = new SalePageProduct();
+        List<SalePageProduct> allProductsOnSalePage = salePageProduct.getAllProductsOnSalePage(productsOnSalePage);
         return allProductsOnSalePage;
     }
+
 }

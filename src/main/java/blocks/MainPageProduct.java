@@ -12,39 +12,36 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @AllArgsConstructor
-public class Product {
+public class MainPageProduct {
     private WebElement image;
     private WebElement name;
     private String price;
     private WebElement wePrice;
-    private WebElement salesOldPrice;
-    private WebElement salesNewPrice;
 
-    public Product() {
+
+    public MainPageProduct() {
     }
 
-    public Product(WebElement container) {
+    public MainPageProduct(WebElement container) {
         this.image = container.findElement(By.xpath(".//img[contains(@data-full-size-image-url,'large_default')]"));
         this.name = container.findElement(By.xpath(".//h3[@class='h3 product-title']"));
         this.price = container.findElement(By.xpath(".//div[@class='product-price-and-shipping']//span[@class='price']")).getText();
         this.wePrice = container.findElement(By.xpath(".//div[@class='product-price-and-shipping']//span[@class='price']"));
-        this.salesOldPrice = container.findElement(By.xpath(".//span[@class='regular-price']"));
-        this.salesNewPrice = container.findElement(By.xpath(".//span[@class='price']"));
     }
 
     public int getNumbersOfProducts(List<WebElement> containers) {
-        List<Product> allProduct = new ArrayList<>();
+        List<MainPageProduct> allMainPageProduct = new ArrayList<>();
         for (WebElement container : containers) {
-            allProduct.add(new Product(container));
+            allMainPageProduct.add(new MainPageProduct(container));
         }
-        return allProduct.size();
+        return allMainPageProduct.size();
     }
 
-    public List<Product> getAllProductsOnPage(List<WebElement> containers) {
-        List<Product> allProducts = new ArrayList<>();
+    public List<MainPageProduct> getAllProductsOnPage(List<WebElement> containers) {
+        List<MainPageProduct> allMainPageProducts = new ArrayList<>();
         for (WebElement container : containers) {
-            allProducts.add(new Product(container));
+            allMainPageProducts.add(new MainPageProduct(container));
         }
-        return allProducts;
+        return allMainPageProducts;
     }
 }
