@@ -1,15 +1,14 @@
 package pages;
 
-import blocks.MainPageProduct;
-import lombok.extern.slf4j.Slf4j;
+import blocks.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 public class MainPage extends BasePage {
 
     //Test #1
@@ -27,15 +26,12 @@ public class MainPage extends BasePage {
     }
 
     public MainPage inputEmail(String email) throws InterruptedException {
-        log.info("Scroll to email field");
         scrollToElementWithJS(emailInput);
-        log.info("enter kjfhkdjlkglkfgj in email field");
         emailInput.sendKeys(email);
         return this;
     }
 
     public MainPage subscribeButton() {
-        log.info("Clicking on the subscribe button");
         subscribeButton.click();
         return this;
     }
@@ -48,12 +44,17 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//button[@aria-label='Language dropdown']")
     private WebElement languageButton;
 
-    @FindBy(xpath = "//ul[contains(@class,'dropdown-menu')]")
+    @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//a[@class='dropdown-item']")
     private List<WebElement> languages;
 
     public MainPage clickOnLanguageButton() {
         languageButton.click();
         return this;
+    }
+
+    public List<WebElement> languages() {
+        languages = new ArrayList<>();
+        return languages;
     }
 
     //Test #3 and #4
@@ -133,14 +134,14 @@ public class MainPage extends BasePage {
     private List<WebElement> productContainersOnMainPage;
 
     public int getNumberOfProductsOnPage() {
-        MainPageProduct mainPageProduct = new MainPageProduct();
-        int productsOnPage = mainPageProduct.getNumbersOfProducts(productContainersOnMainPage);
+        Product product = new Product();
+        int productsOnPage = product.getNumbersOfProducts(productContainersOnMainPage);
         return productsOnPage;
     }
 
-    public List<MainPageProduct> getProductsOnMainPage() {
-        MainPageProduct mainPageProduct = new MainPageProduct();
-        List<MainPageProduct> allProductsOnMainPage = mainPageProduct.getAllProductsOnPage(productContainersOnMainPage);
+    public List<Product> getProductsOnMainPage() {
+        Product product = new Product();
+        List<Product> allProductsOnMainPage = product.getAllProductsOnPage(productContainersOnMainPage);
         return allProductsOnMainPage;
     }
 
@@ -153,4 +154,6 @@ public class MainPage extends BasePage {
         pricesDropLink.click();
         return new OnSalePage();
     }
+
+
 }

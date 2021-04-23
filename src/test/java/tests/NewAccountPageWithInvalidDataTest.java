@@ -56,8 +56,6 @@ public class NewAccountPageWithInvalidDataTest extends BaseTest {
                 .clickOnSaveButtonWithInvalidData()
                 .isErrorMessageIsDisplayed();
 
-        //assertTrue(isMessageDisplayed);
         assertThat(isMessageDisplayed).isTrue();
-
     }
 }

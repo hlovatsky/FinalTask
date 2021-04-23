@@ -1,6 +1,6 @@
 package tests;
 
-import blocks.MainPageProduct;
+import blocks.Product;
 import static org.assertj.core.api.Assertions.assertThat;
 import org.testng.annotations.Test;
 import pages.MainPage;
@@ -21,9 +21,9 @@ public class NumbersNamesPricesOfProductsTest extends BaseTest {
     public void getNamesOFProducts() {
         MainPage mainPage = new MainPage();
 
-        List<MainPageProduct> allProductsWithName = mainPage.getProductsOnMainPage();
-        for (MainPageProduct mainPageProduct : allProductsWithName) {
-            assertThat(mainPageProduct.getName().isDisplayed()).isEqualTo(true);
+        List<Product> allProductsWithName = mainPage.getProductsOnMainPage();
+        for (Product product : allProductsWithName) {
+            assertThat(product.getName().isDisplayed()).isEqualTo(true);
         }
     }
 
@@ -31,9 +31,9 @@ public class NumbersNamesPricesOfProductsTest extends BaseTest {
     public void getPriceOFProducts() {
         MainPage mainPage = new MainPage();
 
-        List<MainPageProduct> allProductsWithPrice = mainPage.getProductsOnMainPage();
-        for (MainPageProduct mainPageProduct : allProductsWithPrice) {
-            assertThat(mainPageProduct.getWePrice().isDisplayed()).isEqualTo(true);
+        List<Product> allProductsWithPrice = mainPage.getProductsOnMainPage();
+        for (Product product : allProductsWithPrice) {
+            assertThat(product.getWeNewPrice().isDisplayed()).isEqualTo(true);
         }
     }
 
@@ -41,11 +41,10 @@ public class NumbersNamesPricesOfProductsTest extends BaseTest {
     public void isPriceMoreThanZero() {
         MainPage mainPage = new MainPage();
 
-        List<MainPageProduct> prices = mainPage.getProductsOnMainPage();
-        for (MainPageProduct mainPageProduct : prices) {
-            String price = mainPageProduct.getPrice().replace("€", "");
-
-            assertThat(Double.parseDouble(price)).isGreaterThan(0.00);
+        List<Product> prices = mainPage.getProductsOnMainPage();
+        for (Product product : prices) {
+            
+            assertThat(product.parseNewPriceToDouble()).isGreaterThan(0.00);
         }
     }
 }
