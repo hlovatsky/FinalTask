@@ -1,7 +1,9 @@
 package tests;
 
 import blocks.Product;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.MainPage;
 
 import java.util.List;
@@ -41,12 +43,13 @@ public class PricesOfProductsTest extends BaseTest {
 
         List<Product> allProductsOnPage = mainPage.clickOnPriceDropLink()
                 .getProductsOnPage();
+        SoftAssertions softAssert =new SoftAssertions();
         for (Product product : allProductsOnPage) {
-
-            assertThat(product.parseNewPriceToDouble()).isEqualTo(product.getAdjNewPrice());
-
-
+            softAssert.assertThat(product.parseNewPriceToDouble())
+                    .as("Wrong callculation")
+                    .isEqualTo(product.getAdjNewPrice());
         }
+        softAssert.assertAll();
     }
 
 

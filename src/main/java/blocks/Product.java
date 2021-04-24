@@ -8,17 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-@Setter
-@EqualsAndHashCode
-@ToString
-@AllArgsConstructor
+
 public class Product {
     private WebElement name;
     private WebElement weOldPrice;
     private WebElement weNewPrice;
     private String oldPrice;
     private String newPrice;
-private String discount;
+    private String discount;
 
     public Product() {
     }
@@ -29,7 +26,7 @@ private String discount;
         this.weNewPrice = container.findElement(By.xpath(".//span[@class='price']"));
         this.oldPrice = container.findElement(By.xpath(".//span[@class='regular-price']")).getText();
         this.newPrice = container.findElement(By.xpath(".//span[@class='price']")).getText();
-        this.discount = container.findElement(By.xpath("//ul[@class='product-flags']//li[@class='product-flag discount']")).getText();
+        this.discount = container.findElement(By.xpath(".//ul[@class='product-flags']//li[@class='product-flag discount']")).getText();
     }
 
     public int getNumbersOfProducts(List<WebElement> containers) {
@@ -65,6 +62,6 @@ private String discount;
     }
 
     public double getAdjNewPrice() {
-        return parseOldPriceToDouble() - getDiscountValue();
+        return (double) Math.round((parseOldPriceToDouble() - getDiscountValue()) * 100) / 100;
     }
 }

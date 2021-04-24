@@ -70,39 +70,28 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//a[contains(@href,'3-clothes')]")
     private WebElement clothesLink;
 
-    @FindBy(xpath = "//a[contains(@href,'4-men')]")
-    private WebElement menCategory;
-
-    @FindBy(xpath = "//a[contains(@href,'5-women')]")
-    private WebElement womenCategory;
+    @FindBy(xpath = "//li[@id='category-3']//a[@class='dropdown-item dropdown-submenu']")
+    private WebElement menAndWomenCategories;
 
     @FindBy(xpath = "//a[contains(@href,'6-accessories')]")
     private WebElement accessoriesLink;
 
-    @FindBy(xpath = "//a[contains(@href,'7-stationery')]")
-    private WebElement stationery;
-
-    @FindBy(xpath = "//a[contains(@href,'8-home-accessories')]")
-    private WebElement homeAccessories;
+    @FindBy(xpath = "//li[@id='category-6']//a[@class='dropdown-item dropdown-submenu']")
+    private WebElement stationeryAndHomeAccessories;
 
     @FindBy(xpath = "//a[contains(@href,'9-art')]")
     private WebElement artLink;
 
-    @FindBy(xpath = "//div[@class='popover sub-menu js-sub-menu collapse']//ul[@class='top-menu']")
-    private WebElement emptyFields;
+    @FindBy(xpath = "//a[@class='dropdown-item dropdown-submenu']")
+    private WebElement categoriesMenu;
 
     public MainPage leanOnClothesLink() {
         Actions actions = new Actions(driver);
         actions.moveToElement(clothesLink).build().perform();
         return this;
     }
-
-    public boolean isMenCategoryDisplayed() {
-        return menCategory.isDisplayed();
-    }
-
-    public boolean isWomenCategoryDisplayed() {
-        return womenCategory.isDisplayed();
+    public boolean areMenCategoryDisplayed() {
+        return menAndWomenCategories.isDisplayed();
     }
 
     public MainPage leanOnAccessoriesLink() {
@@ -111,12 +100,8 @@ public class MainPage extends BasePage {
         return this;
     }
 
-    public boolean isStationeryDisplayed() {
-        return stationery.isDisplayed();
-    }
-
-    public boolean isHomeAccessoriesDisplayed() {
-        return homeAccessories.isDisplayed();
+    public boolean areStationeryAndHomeAccessoriesDisplayed() {
+        return stationeryAndHomeAccessories.isDisplayed();
     }
 
     public MainPage leanOnArtLink() {
@@ -126,7 +111,7 @@ public class MainPage extends BasePage {
     }
 
     public boolean areAnyLinksIsDisplayed() {
-        return emptyFields.isDisplayed();
+        return categoriesMenu.isDisplayed();
     }
 
     //test #6

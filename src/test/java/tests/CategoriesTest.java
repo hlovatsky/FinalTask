@@ -8,46 +8,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CategoriesTest extends BaseTest {
 
     @Test
-    public void isMenCategoryDisplayed() {
+    public void areMenAndWomenCategoryDisplayed() {
 
         MainPage mainPage = new MainPage();
 
-        boolean menCategoryIsDisplayed = mainPage.leanOnClothesLink()
-                .isMenCategoryDisplayed();
+        boolean menAndWomenCategoryIsDisplayed = mainPage.leanOnClothesLink()
+                .areMenCategoryDisplayed();
 
-        assertThat(menCategoryIsDisplayed).isEqualTo(true);
+        assertThat(menAndWomenCategoryIsDisplayed).isEqualTo(true);
     }
 
     @Test
-    public void isWomenCategoryDisplayed() {
-
-        MainPage mainPage = new MainPage();
-
-        boolean womenCategoryIsDisplayed = mainPage.leanOnClothesLink()
-                .isWomenCategoryDisplayed();
-
-        assertThat(womenCategoryIsDisplayed).isEqualTo(true);
-    }
-
-    @Test
-    public void isStationeryDisplayed() {
+    public void areStationeryAndHomeAccessoriesDisplayed() {
 
         MainPage mainPage = new MainPage();
 
         boolean stationeryIsDisplayed = mainPage.leanOnAccessoriesLink()
-                .isStationeryDisplayed();
+                .areStationeryAndHomeAccessoriesDisplayed();
 
         assertThat(stationeryIsDisplayed).isEqualTo(true);
-    }
-
-    @Test
-    public void isHomeAccessoriesDisplayed() {
-
-        MainPage mainPage = new MainPage();
-        boolean homeAccessoriesIsDisplayed = mainPage.leanOnAccessoriesLink()
-                .isHomeAccessoriesDisplayed();
-
-        assertThat(homeAccessoriesIsDisplayed).isEqualTo(true);
     }
 
     @Test

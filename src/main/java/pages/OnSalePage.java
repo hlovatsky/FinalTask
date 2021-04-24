@@ -21,9 +21,4 @@ public class OnSalePage extends BasePage {
         return allProductsOnSalePage;
     }
 
-
-
-
-
-
 }
