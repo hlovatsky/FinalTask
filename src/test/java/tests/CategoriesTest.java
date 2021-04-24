@@ -12,10 +12,10 @@ public class CategoriesTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        boolean menAndWomenCategoryIsDisplayed = mainPage.leanOnClothesLink()
+        boolean menAndWomenCategoriesAreDisplayed = mainPage.leanOnClothesLink()
                 .areMenCategoryDisplayed();
 
-        assertThat(menAndWomenCategoryIsDisplayed).isEqualTo(true);
+        assertThat(menAndWomenCategoriesAreDisplayed).isEqualTo(true);
     }
 
     @Test
@@ -23,10 +23,10 @@ public class CategoriesTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        boolean stationeryIsDisplayed = mainPage.leanOnAccessoriesLink()
+        boolean stationeryAndHomeAccessoriesAreDisplayed = mainPage.leanOnAccessoriesLink()
                 .areStationeryAndHomeAccessoriesDisplayed();
 
-        assertThat(stationeryIsDisplayed).isEqualTo(true);
+        assertThat(stationeryAndHomeAccessoriesAreDisplayed).isEqualTo(true);
     }
 
     @Test
@@ -34,9 +34,9 @@ public class CategoriesTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        boolean anyLinksIsDisplayed = mainPage.leanOnArtLink()
+        boolean anyLinksAreDisplayed = mainPage.leanOnArtLink()
                 .areAnyLinksIsDisplayed();
 
-        assertThat(anyLinksIsDisplayed).isEqualTo(false);
+        assertThat(anyLinksAreDisplayed).isEqualTo(false);
     }
 }
