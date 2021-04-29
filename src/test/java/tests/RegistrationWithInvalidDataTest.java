@@ -3,11 +3,10 @@ package tests;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
 
 import pages.MainPage;
 
-public class NewAccountPageWithInvalidDataTest extends BaseTest {
+public class RegistrationWithInvalidDataTest extends BaseTest {
 
     @Test
     public void checkColorOfFirstNameField() {
@@ -29,10 +28,8 @@ public class NewAccountPageWithInvalidDataTest extends BaseTest {
                 .clickOnSaveButtonWithInvalidData()
                 .getColorOfFirstNameField();
 
-
         String[] s = actualColor.split("solid");
 
-        //assertEquals(s[0], "rgb(255, 76, 76) ");
         assertThat(s[0]).isEqualTo("rgb(255, 76, 76) ");
     }
 

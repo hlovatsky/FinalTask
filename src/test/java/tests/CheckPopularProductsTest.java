@@ -10,7 +10,7 @@ import pages.MainPage;
 
 import java.util.List;
 
-public class NumbersNamesPricesOfProductsTest extends BaseTest {
+public class CheckPopularProductsTest extends BaseTest {
 
     @Test
     public void getNumberOfProducts() {

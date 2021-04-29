@@ -7,7 +7,7 @@ import pages.MainPage;
 
 import java.util.List;
 
-public class PricesOfProductsTest extends BaseTest {
+public class PricesDropCheckTest extends BaseTest {
 
     @Test
     public void haveProductsPrices() throws InterruptedException {

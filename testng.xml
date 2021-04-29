@@ -3,7 +3,7 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/hlova/FinalTask">
         <classes>
-            <class name="tests.CategoriesTest">
+            <class name="tests.CheckCategoriesTest">
                 <methods>
                     <include name="isMenCategoryDisplayed"/>
                     <include name="isWomenCategoryDisplayed"/>
@@ -12,23 +12,23 @@
                     <include name="areAnyLinksIsDisplayed"/>
                 </methods>
             </class>
-            <class name="tests.CheckMessageTest">
+            <class name="tests.SubscribeWithInvalidEmailTest">
                 <methods>
                     <include name="checkErrorMessage"/>
                 </methods>
             </class>
-            <class name="tests.NewAccountPageWithInvalidDataTest">
+            <class name="tests.RegistrationWithInvalidDataTest">
                 <methods>
                     <include name="checkColorOfFirstNameField"/>
                     <include name="isErrorMessageIsDisplayed"/>
                 </methods>
             </class>
-            <class name="tests.NewAccountTest">
+            <class name="tests.RegistrationWithValidDataTest">
                 <methods>
                     <include name="checkName"/>
                 </methods>
             </class>
-            <class name="tests.NumbersNamesPricesOfProductsTest">
+            <class name="tests.CheckPopularProductsTest">
                 <methods>
                     <include name="getNumberOfProducts"/>
                     <include name="getNamesOFProducts"/>
@@ -36,7 +36,7 @@
                     <include name="isPriceMoreThanZero"/>
                 </methods>
             </class>
-            <class name="tests.PricesOfProductsTest">
+            <class name="tests.PricesDropCheckTest">
                 <methods>
                     <include name="hasProductOldPrice"/>
                     <include name="hasProductNewPrice"/>

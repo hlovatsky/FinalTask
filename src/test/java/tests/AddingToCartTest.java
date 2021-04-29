@@ -7,7 +7,7 @@ import pages.ProductPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NewWindowTest extends BaseTest {
+public class AddingToCartTest extends BaseTest {
     @Test
     public void checkTitleOfNewWindow() throws InterruptedException {
         MainPage mainPage = new MainPage();
@@ -19,14 +19,12 @@ public class NewWindowTest extends BaseTest {
                 .clickOnQuantityField()
                 .clickOnAddButton();
 
-
         assertThat(productPage.getNewWindowsText()).isEqualTo("Product successfully added to your shopping cart");
     }
 
     @Test
-    public void checkPaperText() throws InterruptedException {
+    public void checkPaperTextAndQuantityNum() throws InterruptedException {
         MainPage mainPage = new MainPage();
-
 
         ProductPage productPage = mainPage.inputProductsName("Bear")
                 .clickOnBrownBearNotebookProduct()

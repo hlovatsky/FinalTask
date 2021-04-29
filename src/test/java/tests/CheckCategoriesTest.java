@@ -5,7 +5,7 @@ import pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CategoriesTest extends BaseTest {
+public class CheckCategoriesTest extends BaseTest {
 
     @Test
     public void areMenAndWomenCategoryDisplayed() {

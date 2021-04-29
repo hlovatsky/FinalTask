@@ -1,21 +1,21 @@
 package tests;
 
-import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
 import static org.testng.Assert.*;
 
-public class CheckMessageTest extends BaseTest {
+public class SubscribeWithInvalidEmailTest extends BaseTest {
 
     @Test
     public void checkErrorMessage() throws InterruptedException {
         MainPage mainPage = new MainPage();
 
         boolean isErrorTrue = mainPage
-                .inputEmail("kjfhkdjlkglkfgj")
+                .inputEmail("tttt@ttt")
                 .subscribeButton()
                 .isErrorMessageExistInEmailField();
+
         assertFalse(isErrorTrue);
 
     }

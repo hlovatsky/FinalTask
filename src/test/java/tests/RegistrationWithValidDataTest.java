@@ -4,12 +4,11 @@ import org.testng.annotations.Test;
 import pages.MainPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.testng.Assert.*;
 
-public class NewAccountTest extends BaseTest {
+public class RegistrationWithValidDataTest extends BaseTest {
 
     @Test
-    public void checkName() {
+    public void checkNameOfNewUser() {
         MainPage mainPage = new MainPage();
 
         String actualResult = mainPage.clickOnSignInButton()
