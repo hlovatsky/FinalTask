@@ -31,7 +31,7 @@ public class NumbersNamesPricesOfProductsTest extends BaseTest {
         try {
             List<Product> allProductsWithName = mainPage.getProductsOnMainPage();
             for (Product product : allProductsWithName) {
-                assertThat(product.getName().isDisplayed()).isEqualTo(true);
+                assertThat(product.getWeName().isDisplayed()).isEqualTo(true);
             }
         } catch (NoSuchElementException e) {
 

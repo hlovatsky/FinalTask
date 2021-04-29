@@ -1,5 +1,6 @@
 package blocks;
 
+import com.google.common.collect.Ordering;
 import lombok.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,9 +11,10 @@ import java.util.List;
 @Getter
 
 public class Product {
-    private WebElement name;
+    private WebElement weName;
     private WebElement weOldPrice;
     private WebElement weNewPrice;
+    private String name;
     private String oldPrice;
     private String newPrice;
     private String discount;
@@ -21,7 +23,8 @@ public class Product {
     }
 
     public Product(WebElement container) {
-        this.name = container.findElement(By.xpath(".//a[@itemprop='url']"));
+        this.weName = container.findElement(By.xpath(".//a[@itemprop='url']"));
+        this.name = container.findElement(By.xpath(".//a[@itemprop='url']")).getText();
         this.weOldPrice = container.findElement(By.xpath(".//span[@class='regular-price']"));
         this.weNewPrice = container.findElement(By.xpath(".//span[@class='price']"));
         this.oldPrice = container.findElement(By.xpath(".//span[@class='regular-price']")).getText();
@@ -44,7 +47,6 @@ public class Product {
         }
         return allProducts;
     }
-
     public double parseOldPriceToDouble() {
         return Double.parseDouble(getOldPrice().replace("€", ""));
     }
@@ -64,4 +66,5 @@ public class Product {
     public double getAdjNewPrice() {
         return (double) Math.round((parseOldPriceToDouble() - getDiscountValue()) * 100) / 100;
     }
+
 }

@@ -1,6 +1,7 @@
 package pages;
 
 import blocks.Product;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -90,6 +91,7 @@ public class MainPage extends BasePage {
         actions.moveToElement(clothesLink).build().perform();
         return this;
     }
+
     public boolean areMenCategoryDisplayed() {
         return menAndWomenCategories.isDisplayed();
     }
@@ -138,6 +140,25 @@ public class MainPage extends BasePage {
         scrollToElementWithJS(pricesDropLink);
         pricesDropLink.click();
         return new OnSalePage();
+    }
+
+    //test #8
+    @FindBy(xpath = "//a[@class='all-product-link float-xs-left float-md-right h4']")
+    private WebElement allProductsLink;
+
+    public AllProductsPage clickOnAllProductsLink() throws InterruptedException {
+        scrollToElementWithJS(allProductsLink);
+        allProductsLink.click();
+        return new AllProductsPage();
+    }
+
+    //test #9
+    @FindBy(xpath = "//input[@type='text']")
+    private WebElement searchField;
+
+    public SearchResultPage inputProductsName(String productsName) {
+        searchField.sendKeys(productsName, Keys.ENTER);
+        return new SearchResultPage();
     }
 
 
