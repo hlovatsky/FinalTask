@@ -8,29 +8,33 @@ import pages.MainPage;
 
 import java.util.*;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class SortingToCheckTest extends BaseTest {
 
     @Test
     public void areProductsSorted() {
         MainPage mainPage = new MainPage();
-        AllProductsPage allProductsPage = new AllProductsPage();
+        Product product = new Product();
+
         try {
             List<Product> allProductsOnPageBeforeSort = mainPage.clickOnAllProductsLink()
-
                     .getAllProductsOnPage();
 
-            String[] beforeSort = new String[allProductsOnPageBeforeSort.size()];
+            product.compareTo(product);
 
-            for (int i = 0; i < allProductsOnPageBeforeSort.size(); i++) {
-                beforeSort[i] = allProductsOnPageBeforeSort.get(i).getName().trim();
+            Collections.sort(allProductsOnPageBeforeSort);
 
-            }
+            List<Product> allProductsPageAfterSort = mainPage.clickOnAllProductsLink()
+                    .clickOnSortByButton()
+                    .clickOnNameAToZLink()
+                    .getAllProductsOnPage();
 
-            allProductsPage.clickOnSortByButton()
-                    .clickOnNameAToZLink();
+            assertThat(allProductsOnPageBeforeSort).isEqualTo(allProductsPageAfterSort);
 
         } catch (NoSuchElementException | InterruptedException exception) {
 
         }
+
     }
 }

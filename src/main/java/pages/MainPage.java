@@ -39,22 +39,30 @@ public class MainPage extends BasePage {
 
     public boolean isErrorMessageExistInEmailField() {
         return isErrorExist(emailInput);
+
     }
 
     //Test #2
-    @FindBy(xpath = "//button[@aria-label='Language dropdown']")
+    @FindBy(xpath = "//button[@aria-label='Language dropdown']//span")
     private WebElement languageButton;
 
-    @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//a[@class='dropdown-item']")
-    private List<WebElement> languages;
+    @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//li")
+    private List<WebElement> languagesInDropDownList;
 
     public MainPage clickOnLanguageButton() {
         languageButton.click();
         return this;
     }
 
-    public List<WebElement> languages() {
-        languages = new ArrayList<>();
+    public Integer getAllLanguagesInDropdownList() {
+        return languagesInDropDownList.size();
+    }
+
+    public List<String> getLanguage() {
+        List<String> languages = new ArrayList<>();
+        for (WebElement language : languagesInDropDownList) {
+            languages.add(language.getText());
+        }
         return languages;
     }
 
@@ -94,6 +102,7 @@ public class MainPage extends BasePage {
 
     public boolean areMenCategoryDisplayed() {
         return menAndWomenCategories.isDisplayed();
+
     }
 
     public MainPage leanOnAccessoriesLink() {
@@ -104,6 +113,7 @@ public class MainPage extends BasePage {
 
     public boolean areStationeryAndHomeAccessoriesDisplayed() {
         return stationeryAndHomeAccessories.isDisplayed();
+
     }
 
     public MainPage leanOnArtLink() {
@@ -114,6 +124,7 @@ public class MainPage extends BasePage {
 
     public boolean areAnyLinksIsDisplayed() {
         return categoriesMenu.isDisplayed();
+
     }
 
     //test #6

@@ -1,6 +1,5 @@
 package blocks;
 
-import com.google.common.collect.Ordering;
 import lombok.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Getter
 
-public class Product {
+public class Product implements Comparable<Product> {
     private WebElement weName;
     private WebElement weOldPrice;
     private WebElement weNewPrice;
@@ -67,4 +66,8 @@ public class Product {
         return (double) Math.round((parseOldPriceToDouble() - getDiscountValue()) * 100) / 100;
     }
 
+    public int compareTo(Product p){
+        return name.compareTo(p.getName());
+
+    }
 }

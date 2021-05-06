@@ -98,8 +98,7 @@ public class ProductPage extends BasePage {
 
     public double parsePriceIntoDouble() {
         String price = priceOfProduct.getAttribute("innerText").replace("€", "");
-        double priceOfOneProduct = Double.parseDouble(price);
-        return priceOfOneProduct;
+        return Double.parseDouble(price);
     }
 
     public double getTotalPrice() {

@@ -16,7 +16,7 @@ public class SubscribeWithInvalidEmailTest extends BaseTest {
                 .subscribeButton()
                 .isErrorMessageExistInEmailField();
 
-        assertFalse(isErrorTrue);
+        assertTrue(isErrorTrue);
 
     }
 }

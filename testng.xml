@@ -3,29 +3,18 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/hlova/FinalTask">
         <classes>
+            <class name="tests.AddingToCartTest">
+                <methods>
+                    <include name="checkTitleOfNewWindow"/>
+                    <include name="checkPaperTextAndQuantityNum"/>
+                    <include name="checkTotalPrice"/>
+                </methods>
+            </class>
             <class name="tests.CheckCategoriesTest">
                 <methods>
-                    <include name="isMenCategoryDisplayed"/>
-                    <include name="isWomenCategoryDisplayed"/>
-                    <include name="isStationeryDisplayed"/>
-                    <include name="isHomeAccessoriesDisplayed"/>
+                    <include name="areMenAndWomenCategoryDisplayed"/>
+                    <include name="areStationeryAndHomeAccessoriesDisplayed"/>
                     <include name="areAnyLinksIsDisplayed"/>
-                </methods>
-            </class>
-            <class name="tests.SubscribeWithInvalidEmailTest">
-                <methods>
-                    <include name="checkErrorMessage"/>
-                </methods>
-            </class>
-            <class name="tests.RegistrationWithInvalidDataTest">
-                <methods>
-                    <include name="checkColorOfFirstNameField"/>
-                    <include name="isErrorMessageIsDisplayed"/>
-                </methods>
-            </class>
-            <class name="tests.RegistrationWithValidDataTest">
-                <methods>
-                    <include name="checkName"/>
                 </methods>
             </class>
             <class name="tests.CheckPopularProductsTest">
@@ -36,11 +25,36 @@
                     <include name="isPriceMoreThanZero"/>
                 </methods>
             </class>
+            <class name="tests.CheckoutEndToEndTest">
+                <methods>
+                    <include name="getConfirmOfOrder"/>
+                </methods>
+            </class>
             <class name="tests.PricesDropCheckTest">
                 <methods>
-                    <include name="hasProductOldPrice"/>
-                    <include name="hasProductNewPrice"/>
+                    <include name="haveProductsPrices"/>
                     <include name="checkDiscount"/>
+                </methods>
+            </class>
+            <class name="tests.RegistrationWithInvalidDataTest">
+                <methods>
+                    <include name="checkColorOfFirstNameField"/>
+                    <include name="isErrorMessageIsDisplayed"/>
+                </methods>
+            </class>
+            <class name="tests.RegistrationWithValidDataTest">
+                <methods>
+                    <include name="checkNameOfNewUser"/>
+                </methods>
+            </class>
+            <class name="tests.SortingToCheckTest">
+                <methods>
+                    <include name="areProductsSorted"/>
+                </methods>
+            </class>
+            <class name="tests.SubscribeWithInvalidEmailTest">
+                <methods>
+                    <include name="checkErrorMessage"/>
                 </methods>
             </class>
         </classes>

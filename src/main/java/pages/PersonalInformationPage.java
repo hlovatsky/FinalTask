@@ -154,7 +154,8 @@ public class PersonalInformationPage extends BasePage {
     }
 
     public PersonalInformationPage clickOnPayByCheckWindow() {
-        payByCheckWindow.click();
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].click();", payByCheckWindow);
         return this;
     }
 
@@ -162,14 +163,12 @@ public class PersonalInformationPage extends BasePage {
         String price = amountTotalPrice.getAttribute("innerText");
         String[] s = price.split(" ");
         String newPrice = s[0].replace("€", "");
-        double amountTotalPrice = Double.parseDouble(newPrice);
-        return amountTotalPrice;
+        return Double.parseDouble(newPrice);
     }
 
     public double parseTotalPriceToDouble() {
         String price = totalPrice.getAttribute("innerText").replace("€", "");
-        double totalPrice = Double.parseDouble(price);
-        return totalPrice;
+        return Double.parseDouble(price);
     }
 
     public PersonalInformationPage checkPrices() {
