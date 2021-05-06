@@ -17,7 +17,7 @@ public class AddingToCartTest extends BaseTest {
                 .clickOnPaperTypeButton()
                 .clickOnDotedType()
                 .clickOnQuantityField()
-                .clickOnAddButton();
+                .clickOnAddToCartButton();
 
         assertThat(productPage.getNewWindowsText()).isEqualTo("Product successfully added to your shopping cart");
     }
@@ -31,7 +31,7 @@ public class AddingToCartTest extends BaseTest {
                 .clickOnPaperTypeButton()
                 .clickOnDotedType()
                 .clickOnQuantityField()
-                .clickOnAddButton();
+                .clickOnAddToCartButton();
 
         SoftAssertions softAssert = new SoftAssertions();
         softAssert.assertThat(productPage.getPaperTypeText()).isEqualTo(" Doted");
@@ -49,7 +49,7 @@ public class AddingToCartTest extends BaseTest {
                 .clickOnDotedType()
                 .clickOnQuantityField()
                 .clickOnDotedType()
-                .clickOnAddButton();
+                .clickOnAddToCartButton();
 
         assertThat(productPage.getTotalPrice()).isEqualTo(productPage.parseTotalPriceToDouble());
     }

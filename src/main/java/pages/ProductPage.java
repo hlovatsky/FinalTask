@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,7 +17,7 @@ public class ProductPage extends BasePage {
     private WebElement quantityField;
 
     @FindBy(xpath = "//button[@class='btn btn-primary add-to-cart']")
-    private WebElement addButton;
+    private WebElement addToCartButton;
 
     @FindBy(xpath = "//h4[@class='modal-title h6 text-sm-center']")
     private WebElement newWindow;
@@ -28,10 +29,28 @@ public class ProductPage extends BasePage {
     private WebElement quantity;
 
     @FindBy(xpath = "//div[@class='col-md-6']//p[@class='product-price']")
-    private WebElement priceOfOneProduct;
+    private WebElement priceOfProduct;
 
     @FindBy(xpath = "//span[@class='subtotal value']")
     private WebElement totalPrice;
+
+    @FindBy(xpath = "//textarea[@placeholder='Your message here']")
+    private WebElement productCustomizationField;
+
+    @FindBy(xpath = "//button[text()='Save Customization']")
+    private WebElement saveCustomizationButton;
+
+    @FindBy(xpath = "//div[@class='cart-content-btn']//button[@class='btn btn-secondary']")
+    private WebElement continueShoppingButton;
+
+    @FindBy(xpath = "//input[@placeholder='Search our catalog']")
+    private WebElement searchOurCatalogField;
+
+    @FindBy(xpath = "//input[@title='Black']")
+    private WebElement blackColorButton;
+
+    @FindBy(xpath = "//a[@class='btn btn-primary']")
+    private WebElement proceedToCheckoutButton;
 
     public ProductPage() {
         PageFactory.initElements(getDriver(), this);
@@ -56,8 +75,8 @@ public class ProductPage extends BasePage {
         return this;
     }
 
-    public ProductPage clickOnAddButton() {
-        addButton.click();
+    public ProductPage clickOnAddToCartButton() {
+        addToCartButton.click();
         return this;
     }
 
@@ -78,17 +97,50 @@ public class ProductPage extends BasePage {
     }
 
     public double parsePriceIntoDouble() {
-        String price = priceOfOneProduct.getAttribute("innerText").replace("€", "");
+        String price = priceOfProduct.getAttribute("innerText").replace("€", "");
         double priceOfOneProduct = Double.parseDouble(price);
         return priceOfOneProduct;
     }
 
     public double getTotalPrice() {
         return parsePriceIntoDouble() * getQuantityNum();
+
     }
 
     public double parseTotalPriceToDouble() {
         return Double.parseDouble(totalPrice.getAttribute("innerText").replace("€", ""));
+
     }
 
+    public ProductPage inputProductCustomization(String text) {
+        productCustomizationField.sendKeys(text);
+        return this;
+    }
+
+    public ProductPage clickOnSaveCustomizationButton() {
+        saveCustomizationButton.click();
+        return this;
+    }
+
+    public ProductPage clickOnContinueShoppingButton() {
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", continueShoppingButton);
+        return this;
+    }
+
+    public SearchResultPage inputNameOfProduct(String productName) {
+        searchOurCatalogField.sendKeys(productName, Keys.ENTER);
+        return new SearchResultPage();
+    }
+
+    public ProductPage clickOnBlackColorButton() {
+        blackColorButton.click();
+        return this;
+    }
+
+    public ShoppingCartPage clickOnProceedToCheckoutButton() {
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", proceedToCheckoutButton);
+        return new ShoppingCartPage();
+    }
 }

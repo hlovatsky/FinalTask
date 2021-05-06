@@ -152,7 +152,7 @@ public class MainPage extends BasePage {
         return new AllProductsPage();
     }
 
-    //test #9
+    //test #9/#10
     @FindBy(xpath = "//input[@type='text']")
     private WebElement searchField;
 
