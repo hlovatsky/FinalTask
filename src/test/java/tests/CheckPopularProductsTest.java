@@ -20,6 +20,7 @@ public class CheckPopularProductsTest extends BaseTest {
             int allProductsOnPage = mainPage.getNumberOfProductsOnPage();
             assertThat(allProductsOnPage).isEqualTo(8);
         } catch (NoSuchElementException e) {
+            System.out.println("No such element");
 
         }
     }
@@ -34,6 +35,7 @@ public class CheckPopularProductsTest extends BaseTest {
                 assertThat(product.getWeName().isDisplayed()).isEqualTo(true);
             }
         } catch (NoSuchElementException e) {
+            System.out.println("No such element");
 
         }
     }
@@ -48,7 +50,7 @@ public class CheckPopularProductsTest extends BaseTest {
                 assertThat(product.getWeNewPrice().isDisplayed()).isEqualTo(true);
             }
         } catch (NoSuchElementException e) {
-
+            System.out.println("No such element");
         }
     }
 
@@ -62,7 +64,7 @@ public class CheckPopularProductsTest extends BaseTest {
                 assertThat(product.parseNewPriceToDouble()).isGreaterThan(0.00);
             }
         } catch (NoSuchElementException e) {
-
+            System.out.println("No such element");
         }
     }
 }

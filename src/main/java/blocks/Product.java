@@ -9,7 +9,7 @@ import java.util.List;
 
 @Getter
 
-public class Product implements Comparable<Product> {
+public class Product {
     private WebElement weName;
     private WebElement weOldPrice;
     private WebElement weNewPrice;
@@ -22,8 +22,8 @@ public class Product implements Comparable<Product> {
     }
 
     public Product(WebElement container) {
-        this.weName = container.findElement(By.xpath(".//a[@itemprop='url']"));
-        this.name = container.findElement(By.xpath(".//a[@itemprop='url']")).getText();
+        this.weName = container.findElement(By.xpath(".//div[@class='product-description']//a[@itemprop='url']"));
+        this.name = container.findElement(By.xpath(".//div[@class='product-description']//a[@itemprop='url']")).getText();
         this.weOldPrice = container.findElement(By.xpath(".//span[@class='regular-price']"));
         this.weNewPrice = container.findElement(By.xpath(".//span[@class='price']"));
         this.oldPrice = container.findElement(By.xpath(".//span[@class='regular-price']")).getText();

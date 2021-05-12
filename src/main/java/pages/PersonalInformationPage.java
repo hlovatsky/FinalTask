@@ -1,11 +1,15 @@
 package pages;
 
+import blocks.Utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class PersonalInformationPage extends BasePage {
+
+    Utils utils = new Utils();
+
     @FindBy(xpath = "//div[@class='col-md-6 form-control-valign']//input[@value='1']")
     private WebElement mrWindow;
 
@@ -160,15 +164,11 @@ public class PersonalInformationPage extends BasePage {
     }
 
     public double parseAmountTotalPriceToDouble() {
-        String price = amountTotalPrice.getAttribute("innerText");
-        String[] s = price.split(" ");
-        String newPrice = s[0].replace("€", "");
-        return Double.parseDouble(newPrice);
+        return utils.parseToDoubleWithSplit(amountTotalPrice);
     }
 
     public double parseTotalPriceToDouble() {
-        String price = totalPrice.getAttribute("innerText").replace("€", "");
-        return Double.parseDouble(price);
+        return utils.parseToDouble(totalPrice);
     }
 
     public PersonalInformationPage checkPrices() {

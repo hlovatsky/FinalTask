@@ -1,18 +1,19 @@
 package tests;
 
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 import pages.OrderConfirmPage;
-import pages.PersonalInformationPage;
-import pages.ShoppingCartPage;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 public class CheckoutEndToEndTest extends BaseTest {
+
     @Test
-    public void getConfirmOfOrder() {
+    public void checkTextOfConfirmOfOrder() {
         MainPage mainPage = new MainPage();
-        String orderConfirmPage = mainPage.inputProductsName("Mug")
+
+        SoftAssertions softAssert = new SoftAssertions();
+
+        OrderConfirmPage orderConfirmPage = mainPage.inputProductsName("Mug")
                 .clickOnCustomizableMug()
                 .inputProductCustomization("Best mug ever")
                 .clickOnSaveCustomizationButton()
@@ -42,11 +43,16 @@ public class CheckoutEndToEndTest extends BaseTest {
                 .clickOnThirdContinueButton()
                 .clickOnPayByCheckWindow()
                 .checkPrices()
-                .clickOnPlaceOrderButton()
-                .getText();
+                .clickOnPlaceOrderButton();
 
+        softAssert.assertThat(orderConfirmPage.getTextFromConfirmField())
+                .as("The actual text is different from the expected text")
+                .isEqualTo("YOUR ORDER IS CONFIRMED");
 
+        softAssert.assertThat(orderConfirmPage.getSumOfPrice())
+                .as("Wrong calculate")
+                .isEqualTo(orderConfirmPage.parseTotalPriceToDouble());
 
-        assertThat(orderConfirmPage).isEqualTo("YOUR ORDER IS CONFIRMED");
+        softAssert.assertAll();
     }
 }

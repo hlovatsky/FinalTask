@@ -1,5 +1,6 @@
 package pages;
 
+import blocks.Utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class ProductPage extends BasePage {
+
+    Utils utils = new Utils();
+
     @FindBy(xpath = "//select[@class='form-control form-control-select']")
     private WebElement paperTypeButton;
 
@@ -92,13 +96,12 @@ public class ProductPage extends BasePage {
     }
 
     public int getQuantityNum() {
-        return Integer.parseInt(quantity.getAttribute("innerText"));
+        return utils.parseToInteger(quantity);
 
     }
 
     public double parsePriceIntoDouble() {
-        String price = priceOfProduct.getAttribute("innerText").replace("€", "");
-        return Double.parseDouble(price);
+        return utils.parseToDouble(priceOfProduct);
     }
 
     public double getTotalPrice() {
@@ -107,7 +110,7 @@ public class ProductPage extends BasePage {
     }
 
     public double parseTotalPriceToDouble() {
-        return Double.parseDouble(totalPrice.getAttribute("innerText").replace("€", ""));
+        return utils.parseToDouble(totalPrice);
 
     }
 

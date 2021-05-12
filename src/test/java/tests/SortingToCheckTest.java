@@ -23,7 +23,7 @@ public class SortingToCheckTest extends BaseTest {
 
             product.compareTo(product);
 
-            Collections.sort(allProductsOnPageBeforeSort);
+            //Collections.sort(allProductsOnPageBeforeSort);
 
             List<Product> allProductsPageAfterSort = mainPage.clickOnAllProductsLink()
                     .clickOnSortByButton()
