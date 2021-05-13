@@ -12,7 +12,7 @@ public class AddingToCartTest extends BaseTest {
         MainPage mainPage = new MainPage();
         SoftAssertions softAssert = new SoftAssertions();
 
-        ProductPage productPage = mainPage.inputNameOfProduct()
+        ProductPage productPage = mainPage.inputProductsName()
                 .clickOnBrownBearNotebookProduct()
                 .clickOnPaperTypeButton()
                 .clickOnDotedType()

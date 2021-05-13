@@ -13,7 +13,7 @@ public class CheckoutEndToEndTest extends BaseTest {
 
         SoftAssertions softAssert = new SoftAssertions();
 
-        OrderConfirmPage orderConfirmPage = mainPage.inputProductsName()
+        OrderConfirmPage orderConfirmPage = mainPage.inputProducts()
                 .clickOnCustomizableMug()
                 .inputProductCustomization()
                 .clickOnSaveCustomizationButton()
