@@ -9,7 +9,9 @@ public class AddingToCartTest extends BaseTest {
 
     @Test
     public void checkResultAfterAddToCard() throws InterruptedException {
+
         MainPage mainPage = new MainPage();
+
         SoftAssertions softAssert = new SoftAssertions();
 
         ProductPage productPage = mainPage.inputNameOfProduct()
