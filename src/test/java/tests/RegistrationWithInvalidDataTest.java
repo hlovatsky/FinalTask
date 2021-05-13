@@ -1,9 +1,11 @@
 package tests;
 
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import pages.CreateNewAccountPage;
 import pages.MainPage;
 
 public class RegistrationWithInvalidDataTest extends BaseTest {
@@ -13,46 +15,29 @@ public class RegistrationWithInvalidDataTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        String actualColor = mainPage.clickOnSignInButton()
+        SoftAssertions softAssert = new SoftAssertions();
+
+        CreateNewAccountPage createNewAccountPage = mainPage.clickOnSignInButton()
                 .clickOnNoAccountButton()
                 .clickOnMrFieldWindow()
-                .clickOnFirstNameField("James8")
-                .clickOnLastNameField("Pit")
-                .clickOnEmailField("kdjfkj@mail.ru")
-                .clickPasswordField("123123123123")
-                .clickOnBirthdayField("01/01/1970")
+                .enterInvalidFirstName()
+                .enterLastName()
+                .enterEmail()
+                .enterPassword()
+                .enterBirthday()
                 .clickOnReceiveOffersWindow()
                 .clickOnCustomerDataPrivacyWindow()
                 .clickOnSignUpForOurNewsletterWindow()
                 .clickOnAgreeWindow()
-                .clickOnSaveButtonWithInvalidData()
-                .getColorOfFirstNameField();
+                .clickOnSaveButtonWithInvalidData();
 
-        String[] s = actualColor.split("solid");
+        softAssert.assertThat(createNewAccountPage.getColorOfFirstNameField())
+                .as("The colors do not match").isEqualTo("rgb(255, 76, 76) ");
 
-        assertThat(s[0]).isEqualTo("rgb(255, 76, 76) ");
-    }
+        softAssert.assertThat(createNewAccountPage.isErrorMessageIsDisplayed())
+                .as("Message is displayed")
+                .isTrue();
 
-    @Test
-    public void isErrorMessageIsDisplayed() {
-
-        MainPage mainPage = new MainPage();
-
-        boolean isMessageDisplayed = mainPage.clickOnSignInButton()
-                .clickOnNoAccountButton()
-                .clickOnMrFieldWindow()
-                .clickOnFirstNameField("James8")
-                .clickOnLastNameField("Pit")
-                .clickOnEmailField("kdjfkj@mail.ru")
-                .clickPasswordField("123123123123")
-                .clickOnBirthdayField("01/01/1970")
-                .clickOnReceiveOffersWindow()
-                .clickOnCustomerDataPrivacyWindow()
-                .clickOnSignUpForOurNewsletterWindow()
-                .clickOnAgreeWindow()
-                .clickOnSaveButtonWithInvalidData()
-                .isErrorMessageIsDisplayed();
-
-        assertThat(isMessageDisplayed).isTrue();
+        softAssert.assertAll();
     }
 }

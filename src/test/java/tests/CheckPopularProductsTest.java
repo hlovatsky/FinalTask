@@ -35,7 +35,7 @@ public class CheckPopularProductsTest extends BaseTest {
                 assertThat(product.getWeName().isDisplayed()).isEqualTo(true);
             }
         } catch (NoSuchElementException e) {
-            System.out.println("No such element");
+            System.out.println(e.getSupportUrl());
 
         }
     }
