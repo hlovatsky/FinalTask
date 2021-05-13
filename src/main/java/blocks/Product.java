@@ -1,6 +1,6 @@
 package blocks;
 
-import lombok.*;
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -14,10 +14,11 @@ public class Product {
     private WebElement weName;
     private WebElement weOldPrice;
     private WebElement weNewPrice;
+    private WebElement weDiscount;
     private String name;
-    private String oldPrice;
+    private Double oldPrice;
     private String newPrice;
-    private String discount;
+    private Integer discount;
 
     public Product() {
     }
@@ -25,11 +26,17 @@ public class Product {
     public Product(WebElement container) {
         this.weName = container.findElement(By.xpath(".//div[@class='product-description']//a[@itemprop='url']"));
         this.name = container.findElement(By.xpath(".//div[@class='product-description']//a[@itemprop='url']")).getText();
-        this.weOldPrice = container.findElement(By.xpath(".//span[@class='regular-price']"));
         this.weNewPrice = container.findElement(By.xpath(".//span[@class='price']"));
-        this.oldPrice = container.findElement(By.xpath(".//span[@class='regular-price']")).getText();
         this.newPrice = container.findElement(By.xpath(".//span[@class='price']")).getText();
-        this.discount = container.findElement(By.xpath(".//ul[@class='product-flags']//li[@class='product-flag discount']")).getText();
+        if (container.getAttribute("innerHTML").contains("regular-price")) {
+            this.weOldPrice = container.findElement(By.xpath(".//span[@class='regular-price']"));
+            this.oldPrice = Double.valueOf(weOldPrice.getText().substring(1));
+            this.weDiscount = container.findElement(By.xpath("//ul[@class='product-flags']//li[@class='product-flag discount']"));
+            this.discount = Integer.valueOf(weDiscount.getText().substring(1, 3));
+        } else {
+            this.oldPrice = null;
+            this.discount = null;
+        }
     }
 
     public int getNumbersOfProducts(List<WebElement> containers) {
@@ -52,15 +59,6 @@ public class Product {
 
         return allProducts;
     }
-    public double parseOldPriceToDouble() {
-        return Double.parseDouble(getOldPrice().replace("€", ""));
-
-    }
-
-    public int parseDiscountToDouble() {
-        return Integer.parseInt(getDiscount().substring(1, 3));
-
-    }
 
     public double parseNewPriceToDouble() {
         return Double.parseDouble(getNewPrice().replace("€", ""));
@@ -68,16 +66,11 @@ public class Product {
     }
 
     public double getDiscountValue() {
-        return (parseOldPriceToDouble() * parseDiscountToDouble() / 100);
+        return (oldPrice * discount / 100);
 
     }
 
     public double getAdjNewPrice() {
-        return (double) Math.round((parseOldPriceToDouble() - getDiscountValue()) * 100) / 100;
-    }
-
-    public int compareTo(Product p){
-        return name.compareTo(p.getName());
-
+        return (double) Math.round((oldPrice - getDiscountValue()) * 100) / 100;
     }
 }
