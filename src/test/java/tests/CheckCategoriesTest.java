@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CheckCategoriesTest extends BaseTest {
 
     @Test
-    public void areMenAndWomenCategoryDisplayed() {
+    public void areCategoriesDisplayed() {
 
         MainPage mainPage = new MainPage();
 

@@ -10,7 +10,7 @@ import java.util.List;
 public class PricesDropCheckTest extends BaseTest {
 
     @Test
-    public void haveProductsPrices() throws InterruptedException {
+    public void checkProductsPrices() {
 
         MainPage mainPage = new MainPage();
 

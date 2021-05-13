@@ -18,5 +18,6 @@ public class Utils {
 
     public int parseToInteger(WebElement element) {
         return Integer.parseInt(element.getAttribute("innerText"));
+
     }
 }
