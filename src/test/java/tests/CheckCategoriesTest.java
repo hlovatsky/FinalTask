@@ -1,5 +1,6 @@
 package tests;
 
+import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;
 
@@ -12,31 +13,43 @@ public class CheckCategoriesTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        boolean menAndWomenCategoriesAreDisplayed = mainPage.leanOnClothesLink()
-                .areMenCategoryDisplayed();
+        SoftAssertions softAssert = new SoftAssertions();
 
-        assertThat(menAndWomenCategoriesAreDisplayed).isEqualTo(true);
-    }
+        boolean isMenCategoryLinkDisplayed = mainPage.hoverOverTopMenuLinks("CLOTHES")
+                .isCategoryDisplaying("MEN");
 
-    @Test
-    public void areStationeryAndHomeAccessoriesDisplayed() {
+        boolean isWomenCategoryLinkDisplayed = mainPage.hoverOverTopMenuLinks("CLOTHES")
+                .isCategoryDisplaying("WOMEN");
 
-        MainPage mainPage = new MainPage();
+        softAssert.assertThat(isMenCategoryLinkDisplayed)
+                .as("The MEN category isn't display")
+                .isEqualTo(true);
 
-        boolean stationeryAndHomeAccessoriesAreDisplayed = mainPage.leanOnAccessoriesLink()
-                .areStationeryAndHomeAccessoriesDisplayed();
+        softAssert.assertThat(isWomenCategoryLinkDisplayed)
+                .as("The WOMEN category isn't display")
+                .isEqualTo(true);
 
-        assertThat(stationeryAndHomeAccessoriesAreDisplayed).isEqualTo(true);
-    }
+        boolean isStationeryCategoryLinkDisplayed = mainPage.hoverOverTopMenuLinks("ACCESSORIES")
+                .isCategoryDisplaying("STATIONERY");
 
-    @Test
-    public void areAnyLinksIsDisplayed() {
+        boolean isHomeAccessoriesLinkDisplayed = mainPage.hoverOverTopMenuLinks("ACCESSORIES")
+                .isCategoryDisplaying("HOME_ACCESSORIES");
 
-        MainPage mainPage = new MainPage();
+        softAssert.assertThat(isStationeryCategoryLinkDisplayed)
+                .as("The STATIONERY isn't display")
+                .isTrue();
 
-        boolean anyLinksAreDisplayed = mainPage.leanOnArtLink()
-                .areAnyLinksIsDisplayed();
+        softAssert.assertThat(isHomeAccessoriesLinkDisplayed)
+                .as("The HOME_ACCESSORIES isn't display")
+                .isTrue();
 
-        assertThat(anyLinksAreDisplayed).isEqualTo(false);
+        boolean isArtLinkDisplayed = mainPage.hoverOverTopMenuLinks("ART").
+                isAnySubCategoriesAppears();
+
+        softAssert.assertThat(isArtLinkDisplayed)
+                .as("The ART link isn't displayed")
+                .isTrue();
+
+        softAssert.assertAll();
     }
 }

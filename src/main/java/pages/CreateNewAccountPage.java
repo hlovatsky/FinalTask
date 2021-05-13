@@ -54,28 +54,33 @@ public class CreateNewAccountPage extends BasePage {
         return this;
     }
 
-    public CreateNewAccountPage clickOnFirstNameField(String firstName) {
-        firstNameField.sendKeys(firstName);
+    public CreateNewAccountPage enterFirstName() {
+        firstNameField.sendKeys("Oleksii");
         return this;
     }
 
-    public CreateNewAccountPage clickOnLastNameField(String lastName) {
-        lastNameField.sendKeys(lastName);
+    public CreateNewAccountPage enterInvalidFirstName() {
+        firstNameField.sendKeys("James8");
         return this;
     }
 
-    public CreateNewAccountPage clickOnEmailField(String email) {
-        emailField.sendKeys(email);
+    public CreateNewAccountPage enterLastName() {
+        lastNameField.sendKeys("Hlovatskyi");
         return this;
     }
 
-    public CreateNewAccountPage clickPasswordField(String password) {
-        passwordField.sendKeys(password);
+    public CreateNewAccountPage enterEmail() {
+        emailField.sendKeys("lkjlkj@in.ua");
         return this;
     }
 
-    public CreateNewAccountPage clickOnBirthdayField(String email) {
-        birthdayField.sendKeys(email);
+    public CreateNewAccountPage enterPassword() {
+        passwordField.sendKeys("password");
+        return this;
+    }
+
+    public CreateNewAccountPage enterBirthday() {
+        birthdayField.sendKeys("01/01/1970");
         return this;
     }
 
@@ -110,7 +115,9 @@ public class CreateNewAccountPage extends BasePage {
     }
 
     public String getColorOfFirstNameField() {
-        return firstNameField.getCssValue("outline");
+        String[] s = firstNameField.getCssValue("outline").split("solid");
+        return s[0];
+
     }
 
     public boolean isErrorMessageIsDisplayed() {

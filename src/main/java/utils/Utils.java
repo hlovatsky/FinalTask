@@ -1,4 +1,4 @@
-package blocks;
+package utils;
 
 import org.openqa.selenium.WebElement;
 

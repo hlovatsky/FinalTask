@@ -1,6 +1,6 @@
 package pages;
 
-import blocks.Utils;
+import utils.Utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -82,23 +82,23 @@ public class PersonalInformationPage extends BasePage {
         return this;
     }
 
-    public PersonalInformationPage inputFirstName(String firstName) {
-        firstNameField.sendKeys(firstName);
+    public PersonalInformationPage inputFirstName() {
+        firstNameField.sendKeys("Petro");
         return this;
     }
 
-    public PersonalInformationPage inputLastName(String lastName) {
-        lastNameField.sendKeys(lastName);
+    public PersonalInformationPage inputLastName() {
+        lastNameField.sendKeys("Petrenko");
         return this;
     }
 
-    public PersonalInformationPage inputEmail(String email) {
-        emailField.sendKeys(email);
+    public PersonalInformationPage inputEmail() {
+        emailField.sendKeys("fjgjg@mail.ru");
         return this;
     }
 
-    public PersonalInformationPage inputBirthday(String birthday) {
-        birthdayField.sendKeys(birthday);
+    public PersonalInformationPage inputBirthday() {
+        birthdayField.sendKeys("01/01/1970");
         return this;
     }
 
@@ -127,18 +127,18 @@ public class PersonalInformationPage extends BasePage {
         return this;
     }
 
-    public PersonalInformationPage inputAddress(String address) {
-        addressField.sendKeys(address);
+    public PersonalInformationPage inputAddress() {
+        addressField.sendKeys("Vinnitsya");
         return this;
     }
 
-    public PersonalInformationPage inputZipPostalCodeField(String code) {
-        zipPostalCodeField.sendKeys(code);
+    public PersonalInformationPage inputZipPostalCodeField() {
+        zipPostalCodeField.sendKeys("21037");
         return this;
     }
 
-    public PersonalInformationPage inputCityField(String city) {
-        cityField.sendKeys(city);
+    public PersonalInformationPage inputCityField() {
+        cityField.sendKeys("Vinnitsya");
         return this;
     }
 
@@ -158,17 +158,19 @@ public class PersonalInformationPage extends BasePage {
     }
 
     public PersonalInformationPage clickOnPayByCheckWindow() {
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        JavascriptExecutor executor = (JavascriptExecutor) getDriver();
         executor.executeScript("arguments[0].click();", payByCheckWindow);
         return this;
     }
 
     public double parseAmountTotalPriceToDouble() {
         return utils.parseToDoubleWithSplit(amountTotalPrice);
+
     }
 
     public double parseTotalPriceToDouble() {
         return utils.parseToDouble(totalPrice);
+
     }
 
     public PersonalInformationPage checkPrices() {

@@ -1,7 +1,9 @@
 package pages;
 
 import blocks.Product;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -12,7 +14,6 @@ import java.util.List;
 
 public class MainPage extends BasePage {
 
-    //Test #1
     @FindBy(xpath = "//input[@name='email']")
     private WebElement emailInput;
 
@@ -22,13 +23,36 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//p[contains(@class,'alert')]")
     private WebElement textFromMessage;
 
+    @FindBy(xpath = "//button[@aria-label='Language dropdown']//span")
+    private WebElement languageButton;
+
+    @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//li")
+    private List<WebElement> languagesInDropDownList;
+
+    @FindBy(xpath = "//div[@class='user-info']//span[@class='hidden-sm-down']")
+    private WebElement signInButton;
+
+    @FindBy(xpath = "//div[@class='col-md-6 wrapper']//a[@id='link-product-page-prices-drop-1']")
+    private WebElement pricesDropLink;
+
+    @FindBy(xpath = "//li[@id='category-9']//li")
+    private List<WebElement> artLink;
+
+    @FindBy(xpath = "//div[@itemprop='itemListElement']")
+    private List<WebElement> productContainersOnMainPage;
+
+    @FindBy(xpath = "//input[@type='text']")
+    private WebElement searchField;
+
+    @FindBy(xpath = "//a[@class='all-product-link float-xs-left float-md-right h4']")
+    private WebElement allProductsLink;
+
     public MainPage() {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public MainPage inputEmail(String email) throws InterruptedException {
-        scrollToElementWithJS(emailInput);
-        emailInput.sendKeys(email);
+    public MainPage inputEmail() {
+        emailInput.sendKeys("tttt@ttt");
         return this;
     }
 
@@ -42,13 +66,6 @@ public class MainPage extends BasePage {
 
     }
 
-    //Test #2
-    @FindBy(xpath = "//button[@aria-label='Language dropdown']//span")
-    private WebElement languageButton;
-
-    @FindBy(xpath = "//ul[@class='dropdown-menu hidden-sm-down']//li")
-    private List<WebElement> languagesInDropDownList;
-
     public MainPage clickOnLanguageButton() {
         languageButton.click();
         return this;
@@ -56,9 +73,10 @@ public class MainPage extends BasePage {
 
     public Integer getAllLanguagesInDropdownList() {
         return languagesInDropDownList.size();
+
     }
 
-    public List<String> getLanguage() {
+    public List<String> languagesInDropList() {
         List<String> languages = new ArrayList<>();
         for (WebElement language : languagesInDropDownList) {
             languages.add(language.getText());
@@ -66,70 +84,54 @@ public class MainPage extends BasePage {
         return languages;
     }
 
-    //Test #3 and #4
-    @FindBy(xpath = "//div[@class='user-info']//span[@class='hidden-sm-down']")
-    private WebElement signInButton;
-
     public LogPage clickOnSignInButton() {
         signInButton.click();
         return new LogPage();
     }
 
-    //Test #5
-    @FindBy(xpath = "//a[contains(@href,'3-clothes')]")
-    private WebElement clothesLink;
+    Actions actions = new Actions(getDriver());
 
-    @FindBy(xpath = "//li[@id='category-3']//a[@class='dropdown-item dropdown-submenu']")
-    private WebElement menAndWomenCategories;
-
-    @FindBy(xpath = "//a[contains(@href,'6-accessories')]")
-    private WebElement accessoriesLink;
-
-    @FindBy(xpath = "//li[@id='category-6']//a[@class='dropdown-item dropdown-submenu']")
-    private WebElement stationeryAndHomeAccessories;
-
-    @FindBy(xpath = "//a[contains(@href,'9-art')]")
-    private WebElement artLink;
-
-    @FindBy(xpath = "//a[@class='dropdown-item dropdown-submenu']")
-    private WebElement categoriesMenu;
-
-    public MainPage leanOnClothesLink() {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(clothesLink).build().perform();
+    public MainPage hoverOverTopMenuLinks(String linkName) {
+        String categoryId = null;
+        switch (linkName) {
+            case "CLOTHES":
+                categoryId = "3";
+                break;
+            case "ACCESSORIES":
+                categoryId = "6";
+                break;
+            case "ART":
+                categoryId = "9";
+                break;
+        }
+        String baseXpath = "//li[@id='category-" + categoryId + "']";
+        actions.moveToElement(getDriver().findElement(By.xpath(baseXpath))).build().perform();
         return this;
     }
 
-    public boolean areMenCategoryDisplayed() {
-        return menAndWomenCategories.isDisplayed();
-
+    public boolean isCategoryDisplaying(String linkName) {
+        String categoryId = null;
+        switch (linkName) {
+            case "MEN":
+                categoryId = "4";
+                break;
+            case "WOMEN":
+                categoryId = "5";
+                break;
+            case "STATTIONERY":
+                categoryId = "7";
+                break;
+            case "HOME_ACCESSORIES":
+                categoryId = "8";
+                break;
+        }
+        String baseXpath = "//li[@id='category-" + categoryId + "']";
+        return getDriver().findElement(By.xpath(baseXpath)).isDisplayed();
     }
 
-    public MainPage leanOnAccessoriesLink() {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(accessoriesLink).build().perform();
-        return this;
+    public boolean isAnySubCategoriesAppears() {
+        return artLink.size() != 0;
     }
-
-    public boolean areStationeryAndHomeAccessoriesDisplayed() {
-        return stationeryAndHomeAccessories.isDisplayed();
-
-    }
-
-    public MainPage leanOnArtLink() {
-        Actions actions = new Actions(driver);
-        actions.moveToElement(artLink).build().perform();
-        return this;
-    }
-
-    public boolean areAnyLinksIsDisplayed() {
-        return categoriesMenu.isDisplayed();
-
-    }
-
-    //test #6
-    @FindBy(xpath = "//div[@itemprop='itemListElement']")
-    private List<WebElement> productContainersOnMainPage;
 
     public int getNumberOfProductsOnPage() {
         Product product = new Product();
@@ -143,34 +145,18 @@ public class MainPage extends BasePage {
         return allProductsOnMainPage;
     }
 
-    //test #7
-    @FindBy(xpath = "//div[@class='col-md-6 wrapper']//a[@id='link-product-page-prices-drop-1']")
-    private WebElement pricesDropLink;
-
-    public OnSalePage clickOnPriceDropLink() throws InterruptedException {
-        scrollToElementWithJS(pricesDropLink);
+    public OnSalePage clickOnPriceDropLink() {
         pricesDropLink.click();
         return new OnSalePage();
     }
 
-    //test #8
-    @FindBy(xpath = "//a[@class='all-product-link float-xs-left float-md-right h4']")
-    private WebElement allProductsLink;
-
-    public AllProductsPage clickOnAllProductsLink() throws InterruptedException {
-        scrollToElementWithJS(allProductsLink);
-        allProductsLink.click();
-        return new AllProductsPage();
-    }
-
-    //test #9/#10
-    @FindBy(xpath = "//input[@type='text']")
-    private WebElement searchField;
-
-    public SearchResultPage inputProductsName(String productsName) {
-        searchField.sendKeys(productsName, Keys.ENTER);
+    public SearchResultPage inputNameOfProduct() {
+        searchField.sendKeys("Bear", Keys.ENTER);
         return new SearchResultPage();
     }
 
-
+    public SearchResultPage inputProductsName() {
+        searchField.sendKeys("Mug", Keys.ENTER);
+        return new SearchResultPage();
+    }
 }

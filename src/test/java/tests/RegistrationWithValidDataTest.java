@@ -1,31 +1,35 @@
 package tests;
 
 import org.testng.annotations.Test;
+import pages.CreateNewAccountPage;
 import pages.MainPage;
+import pages.NewAccountPage;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class RegistrationWithValidDataTest extends BaseTest {
 
     @Test
-    public void checkNameOfNewUser() {
+    public void checkRegistrationOfNewUser() {
+
         MainPage mainPage = new MainPage();
 
-        String actualResult = mainPage.clickOnSignInButton()
+         NewAccountPage newAccountPage = mainPage.clickOnSignInButton()
                 .clickOnNoAccountButton()
                 .clickOnMrFieldWindow()
-                .clickOnFirstNameField("Oleksii")
-                .clickOnLastNameField("Hlovatskyi")
-                .clickOnEmailField("rith@i.ua")
-                .clickPasswordField("operator")
-                .clickOnBirthdayField("11/07/1982")
+                .enterFirstName()
+                .enterLastName()
+                .enterEmail()
+                .enterPassword()
+                .enterBirthday()
                 .clickOnReceiveOffersWindow()
                 .clickOnCustomerDataPrivacyWindow()
                 .clickOnSignUpForOurNewsletterWindow()
                 .clickOnAgreeWindow()
-                .clickOnSaveButton()
-                .getTextFromNewAccountField();
+                .clickOnSaveButton();
 
-        assertThat(actualResult).isEqualTo("Oleksii Hlovatskyi");
+        assertThat(newAccountPage.getTextFromNewAccountField())
+                .as("New user doesn't create")
+                .isEqualTo("Oleksii Hlovatskyi");
     }
 }

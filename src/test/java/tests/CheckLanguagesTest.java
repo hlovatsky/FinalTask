@@ -19,7 +19,7 @@ public class CheckLanguagesTest extends BaseTest {
                 .as("Number of languages isn't 44").
                 isEqualTo(44);
 
-        List<String> languagesInTheDropDownList = mainPage.getLanguage();
+        List<String> languagesInTheDropDownList = mainPage.languagesInDropList();
         softAssert.assertThat(languagesInTheDropDownList)
                 .as("Dropdown list of languages doesn't contain Українська")
                 .contains("Українська");

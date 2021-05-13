@@ -12,29 +12,23 @@ public class AllProductsPage extends BasePage {
     @FindBy(xpath = "//div[@class='col-md-6']//button[@class='btn-unstyle select-title']")
     public WebElement sortByButton;
 
-    @FindBy (xpath = "//a[contains(text(),'Name, A to Z')]")
+    @FindBy(xpath = "//a[contains(text(),'Name, A to Z')]")
     public WebElement nameAToZLink;
 
     @FindBy(xpath = "//div[@itemprop='itemListElement']")
     List<WebElement> productsContainersOnAllProductsPage;
 
-    @FindBy (xpath = "//a[contains(text(),'Name, Z to A')]")
+    @FindBy(xpath = "//a[contains(text(),'Name, Z to A')]")
     public WebElement nameZToALink;
 
-    @FindBy (xpath = "//a[contains(text(),'Price, low to high')]")
+    @FindBy(xpath = "//a[contains(text(),'Price, low to high')]")
     public WebElement priceLowToHighLink;
 
-    @FindBy (xpath = "//a[contains(text(),'Price, high to low')]")
+    @FindBy(xpath = "//a[contains(text(),'Price, high to low')]")
     public WebElement priceHighToLowLink;
 
     public AllProductsPage() {
-        PageFactory.initElements(getDriver(),this);
-    }
-
-    public AllProductsPage clickOnSortByButton() throws InterruptedException {
-        scrollToElementWithJS(sortByButton);
-        sortByButton.click();
-        return this;
+        PageFactory.initElements(getDriver(), this);
     }
 
     public AllProductsPage clickOnNameAToZLink() {
@@ -55,7 +49,6 @@ public class AllProductsPage extends BasePage {
         firstProduct.click();
         return new ProductPage();
     }
-
 
 
 }

@@ -1,6 +1,6 @@
 package pages;
 
-import blocks.Utils;
+import utils.Utils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;

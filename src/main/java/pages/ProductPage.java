@@ -1,6 +1,6 @@
 package pages;
 
-import blocks.Utils;
+import utils.Utils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -102,6 +102,7 @@ public class ProductPage extends BasePage {
 
     public double parsePriceIntoDouble() {
         return utils.parseToDouble(priceOfProduct);
+
     }
 
     public double getTotalPrice() {
@@ -114,8 +115,8 @@ public class ProductPage extends BasePage {
 
     }
 
-    public ProductPage inputProductCustomization(String text) {
-        productCustomizationField.sendKeys(text);
+    public ProductPage inputProductCustomization() {
+        productCustomizationField.sendKeys("Best mug ever");
         return this;
     }
 
@@ -125,13 +126,13 @@ public class ProductPage extends BasePage {
     }
 
     public ProductPage clickOnContinueShoppingButton() {
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        JavascriptExecutor executor = (JavascriptExecutor)getDriver();
         executor.executeScript("arguments[0].click();", continueShoppingButton);
         return this;
     }
 
-    public SearchResultPage inputNameOfProduct(String productName) {
-        searchOurCatalogField.sendKeys(productName, Keys.ENTER);
+    public SearchResultPage inputProductsName() {
+        searchOurCatalogField.sendKeys("T-shirt", Keys.ENTER);
         return new SearchResultPage();
     }
 
@@ -141,7 +142,7 @@ public class ProductPage extends BasePage {
     }
 
     public ShoppingCartPage clickOnProceedToCheckoutButton() {
-        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        JavascriptExecutor executor = (JavascriptExecutor)getDriver();
         executor.executeScript("arguments[0].click();", proceedToCheckoutButton);
         return new ShoppingCartPage();
     }

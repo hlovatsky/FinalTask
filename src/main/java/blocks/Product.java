@@ -2,6 +2,7 @@ package blocks;
 
 import lombok.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
@@ -41,25 +42,34 @@ public class Product {
 
     public List<Product> getAllProductsOnPage(List<WebElement> containers) {
         List<Product> allProducts = new ArrayList<>();
-        for (WebElement container : containers) {
-            allProducts.add(new Product(container));
+        try {
+            for (WebElement container : containers) {
+                allProducts.add(new Product(container));
+            }
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getSupportUrl());
         }
+
         return allProducts;
     }
     public double parseOldPriceToDouble() {
         return Double.parseDouble(getOldPrice().replace("€", ""));
+
     }
 
     public int parseDiscountToDouble() {
         return Integer.parseInt(getDiscount().substring(1, 3));
+
     }
 
     public double parseNewPriceToDouble() {
         return Double.parseDouble(getNewPrice().replace("€", ""));
+
     }
 
     public double getDiscountValue() {
         return (parseOldPriceToDouble() * parseDiscountToDouble() / 100);
+
     }
 
     public double getAdjNewPrice() {

@@ -14,29 +14,20 @@ public class PricesDropCheckTest extends BaseTest {
 
         MainPage mainPage = new MainPage();
 
-        List<Product> allProductsWithPrices = mainPage.clickOnPriceDropLink()
-                .getProductsOnPage();
         SoftAssertions softAssert = new SoftAssertions();
-        for (Product product : allProductsWithPrices) {
-            softAssert.assertThat(product.getWeOldPrice().isDisplayed()).isEqualTo(true);
-            softAssert.assertThat(product.getWeNewPrice().isDisplayed()).isEqualTo(true);
-            softAssert.assertAll();
-        }
-    }
-
-    @Test
-    public void checkDiscount() throws InterruptedException {
-
-        MainPage mainPage = new MainPage();
 
         List<Product> allProductsOnPage = mainPage.clickOnPriceDropLink()
                 .getProductsOnPage();
-        SoftAssertions softAssert = new SoftAssertions();
         for (Product product : allProductsOnPage) {
+            softAssert.assertThat(product.getWeOldPrice().isDisplayed()).isEqualTo(true);
+
+            softAssert.assertThat(product.getWeNewPrice().isDisplayed()).isEqualTo(true);
+
             softAssert.assertThat(product.parseNewPriceToDouble())
-                    .as("Wrong callculation")
+                    .as("Wrong calculation")
                     .isEqualTo(product.getAdjNewPrice());
+
+            softAssert.assertAll();
         }
-        softAssert.assertAll();
     }
 }
