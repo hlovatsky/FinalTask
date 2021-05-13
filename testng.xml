@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/hlova/FinalTask">
+        <classes>
+            <class name="tests.AddingToCartTest">
+                <methods>
+                    <include name="checkResultAfterAddToCard"/>
+                </methods>
+            </class>
+            <class name="tests.CheckCategoriesTest">
+                <methods>
+                    <include name="areCategoriesDisplayed"/>
+                </methods>
+            </class>
+            <class name="tests.CheckLanguagesTest">
+                <methods>
+                    <include name="checkLanguages"/>
+                </methods>
+            </class>
+            <class name="tests.CheckPopularProductsTest">
+                <methods>
+                    <include name="getPriceOFProducts"/>
+                </methods>
+            </class>
+            <class name="tests.CheckoutEndToEndTest">
+                <methods>
+                    <include name="checkTextOfConfirmOfOrder"/>
+                </methods>
+            </class>
+            <class name="tests.PricesDropCheckTest">
+                <methods>
+                    <include name="checkProductsPrices"/>
+                </methods>
+            </class>
+            <class name="tests.RegistrationWithInvalidDataTest">
+                <methods>
+                    <include name="checkColorOfFirstNameField"/>
+                </methods>
+            </class>
+            <class name="tests.RegistrationWithValidDataTest">
+                <methods>
+                    <include name="checkRegistrationOfNewUser"/>
+                </methods>
+            </class>
+            <class name="tests.SubscribeWithInvalidEmailTest">
+                <methods>
+                    <include name="checkErrorMessage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
