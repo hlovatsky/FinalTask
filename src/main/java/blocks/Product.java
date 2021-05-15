@@ -49,15 +49,10 @@ public class Product {
 
     public List<Product> getAllProductsOnPage(List<WebElement> containers) {
         List<Product> allProducts = new ArrayList<>();
-        try {
             for (WebElement container : containers) {
                 allProducts.add(new Product(container));
             }
-        } catch (NoSuchElementException e) {
-            System.out.println(e.getSupportUrl());
-        }
-
-        return allProducts;
+            return allProducts;
     }
 
     public double parseNewPriceToDouble() {
