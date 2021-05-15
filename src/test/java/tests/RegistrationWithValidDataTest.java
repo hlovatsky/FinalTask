@@ -1,7 +1,6 @@
 package tests;
 
 import org.testng.annotations.Test;
-import pages.CreateNewAccountPage;
 import pages.MainPage;
 import pages.NewAccountPage;
 

@@ -32,5 +32,4 @@ public class SearchResultPage extends BasePage {
         tShirtProduct.click();
         return new ProductPage();
     }
-
 }

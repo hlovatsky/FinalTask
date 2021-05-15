@@ -2,7 +2,6 @@ package tests;
 
 import blocks.Product;
 
-
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 import pages.MainPage;

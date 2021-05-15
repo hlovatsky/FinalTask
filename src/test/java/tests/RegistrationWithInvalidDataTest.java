@@ -3,8 +3,6 @@ package tests;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import pages.CreateNewAccountPage;
 import pages.MainPage;
 

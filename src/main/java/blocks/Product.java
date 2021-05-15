@@ -1,14 +1,17 @@
 package blocks;
 
-import lombok.Getter;
+import lombok.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
+@AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 
 public class Product {
     private WebElement weName;
