@@ -43,9 +43,6 @@ public class MainPage extends BasePage {
     @FindBy(xpath = "//input[@type='text']")
     private WebElement searchField;
 
-    @FindBy(xpath = "//a[@class='all-product-link float-xs-left float-md-right h4']")
-    private WebElement allProductsLink;
-
     public MainPage() {
         PageFactory.initElements(getDriver(), this);
     }
