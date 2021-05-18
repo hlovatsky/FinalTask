@@ -82,23 +82,23 @@ public class PersonalInformationPage extends BasePage {
         return this;
     }
 
-    public PersonalInformationPage inputFirstName() {
-        firstNameField.sendKeys("Petro");
+    public PersonalInformationPage inputFirstName(String firstName) {
+        firstNameField.sendKeys(firstName);
         return this;
     }
 
-    public PersonalInformationPage inputLastName() {
-        lastNameField.sendKeys("Petrenko");
+    public PersonalInformationPage inputLastName(String lastName) {
+        lastNameField.sendKeys(lastName);
         return this;
     }
 
-    public PersonalInformationPage inputEmail() {
-        emailField.sendKeys("fjgjg@mail.ru");
+    public PersonalInformationPage inputEmail(String email) {
+        emailField.sendKeys(email);
         return this;
     }
 
-    public PersonalInformationPage inputBirthday() {
-        birthdayField.sendKeys("01/01/1970");
+    public PersonalInformationPage inputBirthday(String birthday) {
+        birthdayField.sendKeys(birthday);
         return this;
     }
 
@@ -127,18 +127,18 @@ public class PersonalInformationPage extends BasePage {
         return this;
     }
 
-    public PersonalInformationPage inputAddress() {
-        addressField.sendKeys("Vinnitsya");
+    public PersonalInformationPage inputAddress(String address) {
+        addressField.sendKeys(address);
         return this;
     }
 
-    public PersonalInformationPage inputZipPostalCodeField() {
-        zipPostalCodeField.sendKeys("21037");
+    public PersonalInformationPage inputZipPostalCodeField(String code) {
+        zipPostalCodeField.sendKeys(code);
         return this;
     }
 
-    public PersonalInformationPage inputCityField() {
-        cityField.sendKeys("Vinnitsya");
+    public PersonalInformationPage inputCityField(String city) {
+        cityField.sendKeys(city);
         return this;
     }
 

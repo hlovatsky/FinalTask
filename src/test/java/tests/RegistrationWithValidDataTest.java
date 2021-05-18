@@ -10,17 +10,21 @@ public class RegistrationWithValidDataTest extends BaseTest {
 
     @Test
     public void checkRegistrationOfNewUser() {
-
+        String firstName = "James";
+        String lastName = "Johnson";
+        String email = "lkjlkj@in.ua";
+        String password = "1231231234";
+        String birthday = "01/01/1970";
         MainPage mainPage = new MainPage();
 
-         NewAccountPage newAccountPage = mainPage.clickOnSignInButton()
+        NewAccountPage newAccountPage = mainPage.clickOnSignInButton()
                 .clickOnNoAccountButton()
                 .clickOnMrFieldWindow()
-                .enterFirstName()
-                .enterLastName()
-                .enterEmail()
-                .enterPassword()
-                .enterBirthday()
+                .enterFirstName(firstName)
+                .enterLastName(lastName)
+                .enterEmail(email)
+                .enterPassword(password)
+                .enterBirthday(birthday)
                 .clickOnReceiveOffersWindow()
                 .clickOnCustomerDataPrivacyWindow()
                 .clickOnSignUpForOurNewsletterWindow()
@@ -29,6 +33,6 @@ public class RegistrationWithValidDataTest extends BaseTest {
 
         assertThat(newAccountPage.getTextFromNewAccountField())
                 .as("New user doesn't create")
-                .isEqualTo("Oleksii Hlovatskyi");
+                .isEqualTo("James Johnson");
     }
 }

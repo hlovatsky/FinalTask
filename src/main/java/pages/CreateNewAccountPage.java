@@ -54,33 +54,28 @@ public class CreateNewAccountPage extends BasePage {
         return this;
     }
 
-    public CreateNewAccountPage enterFirstName() {
-        firstNameField.sendKeys("Oleksii");
+    public CreateNewAccountPage enterFirstName(String firstName) {
+        firstNameField.sendKeys(firstName);
         return this;
     }
 
-    public CreateNewAccountPage enterInvalidFirstName() {
-        firstNameField.sendKeys("James8");
+    public CreateNewAccountPage enterLastName(String lastName) {
+        lastNameField.sendKeys(lastName);
         return this;
     }
 
-    public CreateNewAccountPage enterLastName() {
-        lastNameField.sendKeys("Hlovatskyi");
+    public CreateNewAccountPage enterEmail(String email) {
+        emailField.sendKeys(email);
         return this;
     }
 
-    public CreateNewAccountPage enterEmail() {
-        emailField.sendKeys("lkjlkj@in.ua");
+    public CreateNewAccountPage enterPassword(String password) {
+        passwordField.sendKeys(password);
         return this;
     }
 
-    public CreateNewAccountPage enterPassword() {
-        passwordField.sendKeys("password");
-        return this;
-    }
-
-    public CreateNewAccountPage enterBirthday() {
-        birthdayField.sendKeys("01/01/1970");
+    public CreateNewAccountPage enterBirthday(String birthday) {
+        birthdayField.sendKeys(birthday);
         return this;
     }
 

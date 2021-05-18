@@ -47,8 +47,8 @@ public class MainPage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public MainPage inputEmail() {
-        emailInput.sendKeys("tttt@ttt");
+    public MainPage enterEmail(String email) {
+        emailInput.sendKeys(email);
         return this;
     }
 
@@ -146,13 +146,8 @@ public class MainPage extends BasePage {
         return new OnSalePage();
     }
 
-    public SearchResultPage inputNameOfProduct() {
-        searchField.sendKeys("Bear", Keys.ENTER);
-        return new SearchResultPage();
-    }
-
-    public SearchResultPage inputProductsName() {
-        searchField.sendKeys("Mug", Keys.ENTER);
+    public SearchResultPage inputProductsName(String product) {
+        searchField.sendKeys(product, Keys.ENTER);
         return new SearchResultPage();
     }
 }

@@ -9,12 +9,11 @@ public class AddingToCartTest extends BaseTest {
 
     @Test
     public void checkResultAfterAddToCard() throws InterruptedException {
-
+        String product = "Bear";
         MainPage mainPage = new MainPage();
-
         SoftAssertions softAssert = new SoftAssertions();
 
-        ProductPage productPage = mainPage.inputNameOfProduct()
+        ProductPage productPage = mainPage.inputProductsName(product)
                 .clickOnBrownBearNotebookProduct()
                 .clickOnPaperTypeButton()
                 .clickOnDotedType()

@@ -15,12 +15,12 @@ import java.util.List;
 
 public class Product {
     private WebElement weName;
-    private WebElement weOldPrice;
-    private WebElement weNewPrice;
-    private WebElement weDiscount;
     private String name;
+    private WebElement weOldPrice;
     private Double oldPrice;
+    private WebElement weNewPrice;
     private String newPrice;
+    private WebElement weDiscount;
     private Integer discount;
 
     public Product() {

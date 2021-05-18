@@ -115,8 +115,8 @@ public class ProductPage extends BasePage {
 
     }
 
-    public ProductPage inputProductCustomization() {
-        productCustomizationField.sendKeys("Best mug ever");
+    public ProductPage inputProductCustomization(String customization) {
+        productCustomizationField.sendKeys(customization);
         return this;
     }
 
@@ -131,8 +131,8 @@ public class ProductPage extends BasePage {
         return this;
     }
 
-    public SearchResultPage inputProductsName() {
-        searchOurCatalogField.sendKeys("T-shirt", Keys.ENTER);
+    public SearchResultPage inputProductsName(String product) {
+        searchOurCatalogField.sendKeys(product, Keys.ENTER);
         return new SearchResultPage();
     }
 
